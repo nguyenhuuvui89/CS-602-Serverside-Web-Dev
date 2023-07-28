@@ -1,6 +1,5 @@
 Run npm install for both part1 and part2 to install the node dependency modules.
 
-Complete the missing functionaility for part1 and part2
 
 
 Part1 Modifications:
