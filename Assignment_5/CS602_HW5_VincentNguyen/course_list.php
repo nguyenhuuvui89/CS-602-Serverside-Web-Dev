@@ -2,7 +2,11 @@
 require_once('database.php');
 
 // Get all courses
-
+$query = 'SELECT * FROM sk_courses ORDER BY courseID ASC';
+$statement = $db->prepare($query);
+$statement ->execute();
+$courses = $statement->fetchAll();
+$statement->closeCursor();
 
 
 ?>
@@ -26,9 +30,14 @@ require_once('database.php');
         </tr>
         
         <!-- add code for the rest of the table here -->
+        <?php foreach ($courses as $course) : ?>
+            <tr>
+                <td><?php echo $course['courseID']; ?></td>
+                <td><?php echo $course['courseName']; ?></td>
+                
+            </tr>
+        <?php endforeach; ?>
 
-
-    
     </table>
     <p>
     <h2>Add Course</h2>

@@ -1,6 +1,12 @@
 <?php
 require('database.php');
 
+// Retrieved the courses data
+$courseQuery = 'SELECT * FROM sk_courses';
+$statementCourse = $db ->prepare($courseQuery);
+$statementCourse ->execute();
+$courses = $statementCourse->fetchAll();
+$statementCourse ->closeCursor();
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +28,13 @@ require('database.php');
               id="add_student_form">
 
             <label>Course:</label>
-
+            <select name="courseID">
+                <?php foreach ($courses as $course) : ?>
+                    <option value="<?php echo $course['courseID']; ?>">
+                        <?php echo "{$course['courseID']} - {$course['courseName']}"; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select><br>
             
             <label>First Name:</label>
             <input type="text" name="first_name"><br>
