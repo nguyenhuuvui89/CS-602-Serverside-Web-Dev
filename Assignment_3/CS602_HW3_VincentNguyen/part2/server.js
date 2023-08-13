@@ -24,7 +24,7 @@ app.use(function(req, res) {
     res.render('404');
 });
 
-app.listen(3000, function(){
-  console.log('http://localhost:3000');
+app.listen(4000, function(){
+  console.log('http://localhost:4000');
 });
 
